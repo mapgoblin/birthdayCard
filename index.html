@@ -50,6 +50,8 @@
 
 		<script src="./js/Cloth.js"></script>
 
+		<script src="fonts/hv_b.typeface.js"></script>
+
 		<script type="x-shader/x-fragment" id="fragmentShaderDepth">
 
 			uniform sampler2D texture;
@@ -280,6 +282,38 @@
 				mesh.receiveShadow = true;
 				mesh.castShadow = true;
 				scene.add( mesh );
+
+				// Get text from hash
+
+				var textString = "Sample Text";
+
+				var text3d = new THREE.TextGeometry( textString, {
+
+					size: 80,
+					height: 20,
+					curveSegments: 2,
+					font: "helvetiker",
+					weight: "bold"
+
+				});
+
+				text3d.computeBoundingBox();
+				var centerOffset = -0.5 * ( text3d.boundingBox.max.x - text3d.boundingBox.min.x );
+
+				var textMaterial = new THREE.MeshBasicMaterial( { color: Math.random() * 0xffffff, overdraw: 0.5 } );
+
+				text = new THREE.Mesh( text3d, textMaterial );
+
+				// Geo > Vertices > Position
+
+				text.position.x = centerOffset;
+				text.position.y = 100;
+				text.position.z = 0;
+
+				text.rotation.x = 0;
+				text.rotation.y = Math.PI * 2;
+
+				scene.add( text );
 
 				//
 
