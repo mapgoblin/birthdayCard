@@ -231,7 +231,7 @@
 				groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
 				groundTexture.repeat.set( 25, 25 );
 				groundTexture.anisotropy = 16;
-				
+
 				var groundMaterial = new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x111111, map: groundTexture } );
 
 				var mesh = new THREE.Mesh( new THREE.PlaneBufferGeometry( 20000, 20000 ), groundMaterial );
@@ -266,7 +266,7 @@
 				mesh.castShadow = true;
 				scene.add( mesh );
 
-				var gg = new THREE.BoxGeometry( 10, 10, 10 );
+				var gg = new THREE.BoxGeometry( 20, 10, 20 );
 				var mesh = new THREE.Mesh( gg, poleMat );
 				mesh.position.y = -250;
 				mesh.position.x = 125;
